@@ -25,7 +25,9 @@ public class TesteFormularioSelenium {
         driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("marcio@teste.com");
 
         // Aqui faz aguardar 5 segundos para conferir como foi o teste
-        Thread.sleep(5000);
+        // Caso queira conferir como está o avanço de passo a passo do teste
+        // O parâmetro é em microssegundos
+        Thread.sleep(2000);
 
         // Também pode ser pesquisado por id
         // Aqui está sendo apagado o e-mail por algum eventual erro
@@ -37,12 +39,14 @@ public class TesteFormularioSelenium {
         // Clica no botão enviar
         driver.findElement(By.xpath("//*[@id=\"enterimg\"]")).click();
 
-        
-        /*
-        //Clicar no botão de Sign In
-        driver.findElement(By.xpath("//*[@id=\"btn1\"]")).click();
+        //Preencher o campo First Name
+        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).sendKeys("marcio");
 
-        //Clicar no botão de Enter
+        //Preencher o campo Last Name
+        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[2]/input")).sendKeys("baldo");
+
+        /*
+                //Clicar no botão de Enter
         driver.findElement(By.xpath("//*[@id=\"enterbtn\"]")).click();
 
         //Armazena o texto de erro do elemento
