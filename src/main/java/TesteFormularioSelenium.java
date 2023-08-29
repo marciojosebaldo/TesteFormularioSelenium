@@ -12,38 +12,64 @@ public class TesteFormularioSelenium {
 
     @BeforeMethod
     public void iniciar() {
-        System.setProperty("webdriver.edge.driver", "C:\\Users\\Aluno\\Desktop\\edgedriver_win64");
+        System.setProperty("webdriver.edge.driver", "C:\\Users\\Aluno\\Desktop\\edgedriver_win64\\msedgedriver.exe");
         driver = new EdgeDriver();
     }
 
     @Test
-    public void testarPaginaInicial() {
+    public void testarPaginaInicial() throws InterruptedException {
         //Abrir a URL informada
         driver.get("https://demo.automationtesting.in/");
 
-        //Clicar em elementos como botões ou links
-        driver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/span/a")).click();
+        //Incluir e-mail no campo
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("marcio@teste.com");
 
-        //Digitar em elemento de input
-        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).sendKeys("usuario");
+        // Aqui faz aguardar 5 segundos para conferir como foi o teste
+        Thread.sleep(5000);
 
-        //Limpa o texto digitado
-        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).clear();
+        // Também pode ser pesquisado por id
+        // Aqui está sendo apagado o e-mail por algum eventual erro
+        driver.findElement(By.id("email")).clear();
 
-        //Armazena o texto do elemento
-        String texto = driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).getText();
+        // Reenvia outro e-mail
+        driver.findElement(By.id("email")).sendKeys("marcio@marcio.com");
+
+        // Clica no botão enviar
+        driver.findElement(By.xpath("//*[@id=\"enterimg\"]")).click();
+
+        
+        /*
+        //Clicar no botão de Sign In
+        driver.findElement(By.xpath("//*[@id=\"btn1\"]")).click();
+
+        //Clicar no botão de Enter
+        driver.findElement(By.xpath("//*[@id=\"enterbtn\"]")).click();
+
+        //Armazena o texto de erro do elemento
+        String texto = driver.findElement(By.xpath("//*[@id=\"errormsg\"]")).getText(); // Digitar aqui o xpath do elemento da mensagem
 
         //Compara o texto retornado com o que deveria retornar de fato
-        Assert.assertEquals("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input", texto);
+        Assert.assertEquals("Invalid User Name or PassWord", texto);
+
+        // Outros comandos úteis para teste da página
+        //Digitar em elemento de input
+        //driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).sendKeys("usuario");
+
+        //Limpa o texto digitado
+        //driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).clear();
 
         //Caixa de seleção
-        Select Day = new Select(driver.findElement(By.xpath("//*[@id=\"Skills\"]")));
-        Day.selectByVisibleText("Java");
+        //Select Day = new Select(driver.findElement(By.xpath("//*[@id=\"Skills\"]")));
+        //Day.selectByVisibleText("Java");
+
+         */
     }
+
 
     @AfterMethod
     public void finalizar() throws InterruptedException {
         Thread.sleep(5000);
         driver.quit();
     }
+
 }
