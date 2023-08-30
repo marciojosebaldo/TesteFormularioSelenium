@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -28,7 +29,8 @@ public class TesteFormularioSelenium {
         // Aqui faz aguardar 5 segundos para conferir como foi o teste
         // Caso queira conferir como está o avanço de passo a passo do teste
         // O parâmetro é em microssegundos
-        Thread.sleep(2000);
+        // Caso queira aguardar o tempo, descomente a linha abaixo ao remover as duas "//"
+        //Thread.sleep(2000);
 
         // Também pode ser pesquisado por id
         // Aqui está sendo apagado o e-mail por algum eventual erro
@@ -65,12 +67,34 @@ public class TesteFormularioSelenium {
 
         // Preenche o campo Languages que é um tipo multi-select
         // Para isso, foi criada uma variável do tipo WebElement e receber o XPath do elemento
-        WebElement multSelect = driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[7]/div/multi-select"));
+        WebElement multSelect = driver.findElement(By.xpath("//*[@id=\"msdd\"]"));
         // Inclua o método click()
         multSelect.click();
         // Crie outra variável do tipo WebElement e receberá o texto Portugues
-        WebElement opcaoPortugues = driver.findElement(By.xpath("//a[contains(text(), 'Portuguese')]"));
+        WebElement opcaoPortuguese = driver.findElement(By.xpath("//a[contains(text(), 'Portuguese')]"));
+        opcaoPortuguese.click();
+        // E outra para English
+        WebElement opcaoEnglish = driver.findElement(By.xpath("//a[contains(text(), 'English')]"));
+        opcaoEnglish.click();
+        driver.findElement(By.xpath("//*[@id=\"section\"]/div/div")).click();
 
+        // Temporizador para você visualizar a caixa sendo "desclicada"
+        Thread.sleep(2000);
+
+        // Para o form-control Skills é desta forma
+        driver.findElement(By.xpath("//*[@id=\"Skills\"]")).sendKeys("Java");
+
+        // Select Country, não há muito diferença
+        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[10]/div/span/span[1]/span/span[2]/b")).click();
+        driver.findElement(By.xpath("//*[@id=\"country\"]")).sendKeys("United States of America");
+        driver.findElement(By.xpath("<iframe src=\"https://www.google.com/recaptcha/api2/aframe\" width=\"0\" height=\"0\" style=\"display: none;\"></iframe>")).sendKeys(Keys.ENTER);
+
+        Thread.sleep(2000);
+
+        // Preencher o ano do aniversário, mês e dia, respectivamente
+        driver.findElement(By.xpath("//*[@id=\"yearbox\"]")).sendKeys("2023");
+        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[11]/div[2]/select")).sendKeys("Setembro");
+        driver.findElement(By.xpath("//*[@id=\"daybox\"]")).sendKeys("20");
 
 
         /*
