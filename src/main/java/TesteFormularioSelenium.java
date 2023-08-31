@@ -82,7 +82,7 @@ public class TesteFormularioSelenium {
         driver.findElement(By.xpath("//*[@id=\"section\"]/div/div")).click();
 
         // Temporizador para você visualizar a caixa sendo "desclicada"
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         // Para o form-control Skills é desta forma
         driver.findElement(By.xpath("//*[@id=\"Skills\"]")).sendKeys("Java");
@@ -90,7 +90,7 @@ public class TesteFormularioSelenium {
         // Select Country, não há muito diferença
         driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[10]/div/span/span[1]/span/span[2]/b")).click();
         driver.findElement(By.xpath("//*[@id=\"country\"]")).sendKeys("United States of America");
-        driver.findElement(By.xpath("<iframe src=\"https://www.google.com/recaptcha/api2/aframe\" width=\"0\" height=\"0\" style=\"display: none;\"></iframe>")).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[10]/div/span/span[1]/span/span[2]/b")).click();
 
         Thread.sleep(2000);
 
