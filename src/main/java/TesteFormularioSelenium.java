@@ -12,6 +12,9 @@ import org.testng.annotations.Test;
 public class TesteFormularioSelenium {
     private WebDriver driver;
 
+    // Indica o diretório do driver do Edge
+    // É necessário que o seu navegador tenha a mesma versão que o driver utilizado para os testes com Selenium
+    // Neste exemplo, foi utilizado o navegador Edge
     @BeforeMethod
     public void iniciar() {
         System.setProperty("webdriver.edge.driver", "C:\\Users\\Aluno\\Desktop\\edgedriver_win64\\msedgedriver.exe");
