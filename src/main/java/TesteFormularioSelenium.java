@@ -101,25 +101,30 @@ public class TesteFormularioSelenium {
         driver.findElement(By.xpath("//*[@id=\"firstpassword\"]")).sendKeys("senha");
         driver.findElement(By.xpath("//*[@id=\"secondpassword\"]")).sendKeys("senha");
 
+        // Para fugir um pouco do padrão acima, o exemplo abaixo utilizará variáveis para armazenar os valores apropriados para cada função
+        // Criou uma variável chamada idBotao do tipo WebElement para armazenar o elemento de input
+        WebElement idBotao = driver.findElement(By.id("imagesrc"));
+        Thread.sleep(2000);
+        // Armazene o caminho da URL onde está a imagem
+        String urlImagem = "C:\\Users\\Aluno\\Desktop\\planetaTerra.png";
+        // Agora enviará
+        idBotao.sendKeys(urlImagem);
+
 
         /*
-        //Armazena o texto de erro do elemento
+        Abaixo existem outros comandos úteis que podem ser utilizados
+        //Armazena em uma variável do tipo String o texto de erro do elemento
         String texto = driver.findElement(By.xpath("//*[@id=\"errormsg\"]")).getText(); // Digitar aqui o xpath do elemento da mensagem
 
-        //Compara o texto retornado com o que deveria retornar de fato
+        //Comparação do texto recebido com o que deveria retornar
         Assert.assertEquals("Invalid User Name or PassWord", texto);
-
-        // Outros comandos úteis para teste da página
-        //Digitar em elemento de input
-        //driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).sendKeys("usuario");
 
         //Limpa o texto digitado
         //driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[1]/div[1]/input")).clear();
 
-        //Caixa de seleção
+        //Caixa de seleção com armazenagem em variável no tipo Select
         //Select Day = new Select(driver.findElement(By.xpath("//*[@id=\"Skills\"]")));
         //Day.selectByVisibleText("Java");
-
          */
     }
 
