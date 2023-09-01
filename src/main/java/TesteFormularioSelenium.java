@@ -92,12 +92,14 @@ public class TesteFormularioSelenium {
         driver.findElement(By.xpath("//*[@id=\"country\"]")).sendKeys("United States of America");
         driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[10]/div/span/span[1]/span/span[2]/b")).click();
 
-        Thread.sleep(2000);
-
         // Preencher o ano do aniversário, mês e dia, respectivamente
         driver.findElement(By.xpath("//*[@id=\"yearbox\"]")).sendKeys("2023");
         driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[11]/div[2]/select")).sendKeys("Setembro");
         driver.findElement(By.xpath("//*[@id=\"daybox\"]")).sendKeys("20");
+
+        // Preencher os dois campos: Password e Confirm Password. Obviamente, cada campo deverá ter o seu próprio XPath
+        driver.findElement(By.xpath("//*[@id=\"firstpassword\"]")).sendKeys("senha");
+        driver.findElement(By.xpath("//*[@id=\"secondpassword\"]")).sendKeys("senha");
 
 
         /*
