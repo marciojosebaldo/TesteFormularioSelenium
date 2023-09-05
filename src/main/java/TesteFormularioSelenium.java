@@ -101,14 +101,11 @@ public class TesteFormularioSelenium {
         driver.findElement(By.xpath("//*[@id=\"firstpassword\"]")).sendKeys("senha");
         driver.findElement(By.xpath("//*[@id=\"secondpassword\"]")).sendKeys("senha");
 
-        // Para fugir um pouco do padrão acima, o exemplo abaixo utilizará variáveis para armazenar os valores apropriados para cada função
-        // Criou uma variável chamada idBotao do tipo WebElement para armazenar o elemento de input
-        WebElement idBotao = driver.findElement(By.id("imagesrc"));
-        Thread.sleep(2000);
+        // Anexar a imagem ao clicar no botão "Escolher ficheiro"
+        driver.findElement(By.xpath("//*[@id=\"section\"]/div/div/div[3]/div[2]")).click();
         // Armazene o caminho da URL onde está a imagem
-        String urlImagem = "C:\\Users\\Aluno\\Desktop\\planetaTerra.png";
-        // Agora enviará
-        idBotao.sendKeys(urlImagem);
+        String urlImagem = "C:\\Users\\Aluno\\Desktop\\modeloImagem.jpg";
+        fileInput.sendKeys(urlImagem);
 
 
         /*
