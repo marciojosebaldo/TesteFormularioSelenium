@@ -9,6 +9,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 public class TesteFormularioSelenium {
     private WebDriver driver;
 
@@ -22,7 +26,7 @@ public class TesteFormularioSelenium {
     }
 
     @Test
-    public void testarPaginaInicial() throws InterruptedException {
+    public void testarPaginaInicial() throws InterruptedException, AWTException {
         // Abrir a URL informada
         driver.get("https://demo.automationtesting.in/");
 
@@ -105,7 +109,28 @@ public class TesteFormularioSelenium {
         driver.findElement(By.xpath("//*[@id=\"section\"]/div/div/div[3]/div[2]")).click();
         // Armazene o caminho da URL onde está a imagem
         String urlImagem = "C:\\Users\\Aluno\\Desktop\\modeloImagem.jpg";
-        fileInput.sendKeys(urlImagem);
+
+        // Use a classe Robot para lidar com a janela de diálogo do sistema operacional
+        // Foi deixado InterruptedException e AWTException para tratar as exceções que são necessárias para a classe Robot
+        Robot robot = new Robot();
+
+        // Copie o caminho do arquivo para a área de transferência
+        StringSelection selection = new StringSelection(urlImagem);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+
+        // Pressione Ctrl + V para colar o caminho do arquivo na janela de diálogo
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+
+        // Pressione Enter para confirmar o upload
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+        // Espera opcional para que o envio do arquivo seja processado
+        Thread.sleep(5000);
+        driver.quit();
 
 
         /*
