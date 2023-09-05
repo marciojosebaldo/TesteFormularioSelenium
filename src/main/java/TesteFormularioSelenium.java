@@ -114,6 +114,9 @@ public class TesteFormularioSelenium {
         // Foi deixado InterruptedException e AWTException para tratar as exceções que são necessárias para a classe Robot
         Robot robot = new Robot();
 
+        // Aguardar a janela ser aberta
+        Thread.sleep(1000);
+
         // Copie o caminho do arquivo para a área de transferência
         StringSelection selection = new StringSelection(urlImagem);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
@@ -128,9 +131,11 @@ public class TesteFormularioSelenium {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
 
-        // Espera opcional para que o envio do arquivo seja processado
+        // Espera para que o envio do arquivo seja concluído
         Thread.sleep(5000);
-        driver.quit();
+
+        // Clique no botão "Submit"
+        driver.findElement(By.xpath("//*[@id=\"submitbtn\"]")).click();
 
 
         /*
