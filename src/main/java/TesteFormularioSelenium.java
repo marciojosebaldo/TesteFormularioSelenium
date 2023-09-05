@@ -107,7 +107,7 @@ public class TesteFormularioSelenium {
 
         // Anexar a imagem ao clicar no botão "Escolher ficheiro"
         driver.findElement(By.xpath("//*[@id=\"section\"]/div/div/div[3]/div[2]")).click();
-        // Armazene o caminho da URL onde está a imagem
+        // Armazene o caminho da URL onde está a imagem. Você precisará adequar o diretório, nome da imagem e extensão da mesma para funcionar no seu
         String urlImagem = "C:\\Users\\Aluno\\Desktop\\modeloImagem.jpg";
 
         // Use a classe Robot para lidar com a janela de diálogo do sistema operacional
